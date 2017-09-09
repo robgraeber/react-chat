@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>React Chat | Home</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <div id="reactContainer"></div>
+    <script>
+      window.chatUsername = "<%= assigns.chatUsername %>"
+    </script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    
+  </body>
+</html>
