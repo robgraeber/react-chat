@@ -16,51 +16,65 @@ import users from './modules/users';
 import {setUsername} from './modules/users';
 
 const styles = {
-    appContainer: {
-        margin: '55px auto',
-        width: '980px'
-    },
-    chatContainer: {
-        backgroundColor: '#ffffff',
-        borderRadius: '4px',
-        boxShadow: '0 2px 6px 0 hsla(0, 0%, 0%, 0.2)',
-        marginTop: '20px'
-    }
+  appContainer: {
+    margin: '55px auto',
+    width: '980px'
+  },
+  chatContainer: {
+    backgroundColor: '#ffffff',
+    borderRadius: '4px',
+    boxShadow: '0 2px 6px 0 hsla(0, 0%, 0%, 0.2)',
+    marginTop: '20px'
+  }
 };
 
 function App() {
-    return (
-        <div css={styles.appContainer}>
-            <h1 css={[p30, center]}>Welcome to React Chat!</h1>
-            <div css={styles.chatContainer}>
-                <ChatWindow />
-                <JoinedUsers />
-                <TextInput />
-            </div>
-            <UsernameSelect />
-        </div>
-    );
+  return (
+    <div css={styles.appContainer}>
+      <h1 css={[p30, center]}>Welcome to React Chat!</h1>
+      <div css={styles.chatContainer}>
+        <ChatWindow />
+        <JoinedUsers />
+        <TextInput />
+      </div>
+      <UsernameSelect />
+    </div>
+  );
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers(
-    {messages, users},
-    Immutable.Record({
-        messages: undefined,
-        users: undefined
-    })
+  {messages, users},
+  Immutable.Record({
+    messages: undefined,
+    users: undefined
+  })
 );
 
 const store = createStore(
-    rootReducer,
-    composeEnhancers(applyMiddleware(ChatSocket))
+  rootReducer,
+  composeEnhancers(applyMiddleware(ChatSocket))
 );
 store.dispatch(setUsername(window.chatUsername));
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('reactContainer')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('reactContainer')
 );
+
+// type Fetcher<T> =
+//     | {type: 'NEVER_FETCHED'}
+//     | {type: 'FETCHING'}
+//     | {type: 'ERROR', error: string}
+//     | {type: 'SUCESS', data: T}
+
+// type StoreState = {
+//     myUsername:
+//         | {type: 'NEVER_FETCHED'}
+//         | {type: 'FETCHING'}
+//         | {type: 'ERROR', error: string}
+//         | {type: 'SUCESS', data: string},
+// }
