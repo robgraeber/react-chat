@@ -48,7 +48,7 @@ exports.config = {
     // Configure your plugins
     plugins: {
         babel: {
-            presets: ['es2015', 'es2017', 'stage-1', 'react'],
+            presets: ['env', 'stage-1', 'react'],
             plugins: [
                 'transform-object-rest-spread',
                 ['transform-react-jsx', {pragma: 'Glamor.createElement'}]
