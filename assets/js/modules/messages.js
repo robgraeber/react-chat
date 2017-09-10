@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import Action from 'flux-standard-action';
 
 //Action Types
 export const SEND_MESSAGE = 'app/messages/SEND_MESSAGE';
@@ -16,22 +17,17 @@ export default (state = Immutable.List(), action = {}) => {
 
 //Actions
 const Message = Immutable.Record({
-  text: undefined,
-  date: undefined,
-  username: undefined
+  text: null,
+  date: null,
+  username: null
 });
 
 export function sendMessage(text, username, date = new Date()) {
-  return {
-    type: SEND_MESSAGE,
-    payload: new Message({text, date, username})
-  };
+  return new Action(SEND_MESSAGE, new Message({text, date, username}));
 }
+
 export function receiveMessage(text, username, date = new Date()) {
-  return {
-    type: RECEIVE_MESSAGE,
-    payload: new Message({text, date, username})
-  };
+  return new Action(RECEIVE_MESSAGE, new Message({text, date, username}));
 }
 
 export function sendNotification(text, date) {

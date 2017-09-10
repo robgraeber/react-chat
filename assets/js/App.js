@@ -12,8 +12,7 @@ import TextInput from './components/TextInput';
 import UsernameSelect from './components/UsernameSelect';
 import ChatSocket from './middleware/ChatSocket';
 import messages from './modules/messages';
-import users from './modules/users';
-import {setUsername} from './modules/users';
+import users, {setUsername} from './modules/users';
 
 const styles = {
   appContainer: {
@@ -56,6 +55,7 @@ const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(ChatSocket))
 );
+// Sets unique chat name provided from server.
 store.dispatch(setUsername(window.chatUsername));
 
 ReactDOM.render(
@@ -64,17 +64,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('reactContainer')
 );
-
-// type Fetcher<T> =
-//     | {type: 'NEVER_FETCHED'}
-//     | {type: 'FETCHING'}
-//     | {type: 'ERROR', error: string}
-//     | {type: 'SUCESS', data: T}
-
-// type StoreState = {
-//     myUsername:
-//         | {type: 'NEVER_FETCHED'}
-//         | {type: 'FETCHING'}
-//         | {type: 'ERROR', error: string}
-//         | {type: 'SUCESS', data: string},
-// }

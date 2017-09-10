@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "aphrodite": "^1.2.3",
+    "flux-standard-action": "github:robgraeber/flux-standard-action",
     "glamor": "^2.20.40",
     "immutable": "^3.8.1",
     "js-common-styles": "^1.0.0",
